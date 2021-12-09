@@ -1,0 +1,215 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "sservice API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/show_requests_list/{user}": {
+            "get": {
+                "tags": [
+                    "requests"
+                ],
+                "summary": "Запрос списка заявок",
+                "operationId": "a28c33cd7b6a52c0e2454fd6aa78b420",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/show_request/{item}": {
+            "get": {
+                "tags": [
+                    "requests"
+                ],
+                "summary": "Запрос заявки",
+                "operationId": "91a816f3967f7d37db8eac3f17217abc",
+                "parameters": [
+                    {
+                        "name": "item",
+                        "in": "path",
+                        "description": "request id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "admin": {
+                                            "type": "string"
+                                        },
+                                        "user": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "is_closed": {
+                                            "type": "boolean"
+                                        },
+                                        "comments": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "name": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/create_request/{user}": {
+            "post": {
+                "tags": [
+                    "requests"
+                ],
+                "summary": "создание новой заявки",
+                "operationId": "c57a587f3d1d18c297bcb72970d17910",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/add_comment/{item}/{user}": {
+            "post": {
+                "tags": [
+                    "requests"
+                ],
+                "summary": "добавление комментария",
+                "operationId": "395b61f3afc7dfed3e47d6c58907a163",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true
+                    },
+                    {
+                        "name": "item",
+                        "in": "path",
+                        "description": "request id",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "text": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/add_comment/{item}": {
+            "post": {
+                "tags": [
+                    "requests"
+                ],
+                "summary": "закрытие заявки",
+                "operationId": "7612d580ddf1698b0aa506ec68a870d4",
+                "parameters": [
+                    {
+                        "name": "item",
+                        "in": "path",
+                        "description": "request id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
