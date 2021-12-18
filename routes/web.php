@@ -12,3 +12,5 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/{user}', 'VRequestController@index')->name('request.index');
+Route::get('/show/{item}', 'VRequestController@show')->name('request.show');

@@ -1,0 +1,8 @@
+Тема: {{request.name}}
+Пользователь: {{request.user.name}}
+Описание: {{request.description}}
+Закрыто: {{{% if request.is_closed %}Закрыта{% else %}Открыта{% endif %} }}
+Комментарии:<br>
+{% for comment in request.comments %}
+   {{comment.user.name}} : {{comment.text}}<br><br>
+{% endfor %}

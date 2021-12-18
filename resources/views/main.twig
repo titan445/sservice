@@ -1,0 +1,34 @@
+<table class="tbl">
+	<thead class="request-head">
+		<tr>
+			<th>Пользователь</th>
+			<th>Администратор</th>
+			<th>Описание</th>
+			<th>Тема</th>
+			<th>Закрыта</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		{% if requests|length > 0 %}
+
+			{% for request in requests %}
+				<tr class="tbl-row" onclick="window.location='{{route('request.show', [request.id])}}'" >
+					<td>
+                        {{request.user.name}}
+					</td>
+					<td>{{request.admin.name}}</td>
+					<td>
+						{{request.description}}
+					</td>
+					<td>
+						{{request.name}}
+					</td>
+					<td>
+						{{{% if request.is_closed %}Закрыта{% else %}Открыта{% endif %} }}
+					</td>
+				</tr>
+			{% endfor %}
+		{% endif %}
+	</tbody>
+</table>

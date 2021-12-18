@@ -14,7 +14,7 @@ class RequestController extends Controller
     *     path="/api/show_requests_list/{user}",
     *     summary="Запрос списка заявок",
     *     tags={"requests"},
-   *  @OA\Parameter(
+    *  @OA\Parameter(
      *         name="user",
      *         in="path",
      *         description="user id",
